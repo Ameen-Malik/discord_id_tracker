@@ -1,7 +1,5 @@
 # Discord ID Tracker Bot
-
-A Discord bot to collect user IDs from a specified channel within a date range and save them to a text file (`user_ids.txt`).
-
+This is a Discord bot that collects the user IDs of people who have posted messages in a specific channel of your Discord server within a given date range. It saves these IDs to a (`user_ids.txt`) text file, which can be used for tracking user engagement or any other purpose.
 ## Setup
 
 Follow the steps below to set up the bot:
@@ -41,3 +39,4 @@ Follow the steps below to set up the bot:
    ```bash
    python main.py
    ```
+The bot will now be running and will log in to Discord using the provided bot token.
