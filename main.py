@@ -56,10 +56,10 @@ async def collectids(ctx):
         await ctx.send(f"Collecting user IDs from {start_datetime} to {end_datetime} in channel '{channel_name}'.")
 
         # Collect user IDs from the specified channel and date range
-        user_ids = set()
+        user_ids = []
         async for message in channel.history(after=start_datetime, before=end_datetime):
             if start_datetime <= message.created_at < end_datetime:
-                user_ids.add(message.author.id)
+                user_ids.append(message.author.id)
 
         await ctx.send(f"Collected {len(user_ids)} unique user IDs.")
         
