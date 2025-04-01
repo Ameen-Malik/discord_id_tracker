@@ -40,3 +40,29 @@ Follow the steps below to set up the bot:
    python main.py
    ```
 The bot will now be running and will log in to Discord using the provided bot token.
+
+### STEPS TO COLLECT THE DISCORD IDS
+
+1. **RUN THE ids Collection command**
+
+   Once the bot is up and running in your target server, head-over to a private channel say(team-chat) and run the below command
+   ```bash
+   !collectids
+   ```
+2. **Answer the necessary questions**
+
+   The command in first step will prompt you to specify the discord channel to collect the ids of the users posting on say(daily-post or 0to100xengineer) channels.
+
+   Followed by that mention the dates in the format(YYYY-MM-DD):
+   - START DATE
+   - END DATE(inclusive)
+3. **Final Step**
+
+   Head over to the project root directory and you'll have all the discord IDs collected in the `user_ids.txt` file.
+
+   Now you are ready to use these ids for any engagement related tasks like Leaderboard management yada yada. Have fun!!
+
+
+Author: Ameen Malik
+
+For any queries here you go: am.ameenmalik@gmail.com

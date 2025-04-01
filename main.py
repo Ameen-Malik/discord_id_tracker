@@ -19,6 +19,10 @@ bot = commands.Bot(command_prefix='!', intents=intents)
 async def on_ready():
     print(f'Logged in as {bot.user}')
 
+
+# THE COMMAND TO BE RUN IN THE TARGET SERVER TO COLLECT THE IDS
+# THE COMMAND AS DEFINED BELOW: !collectids
+
 @bot.command()
 async def collectids(ctx):
     try:
@@ -39,7 +43,7 @@ async def collectids(ctx):
         start_datetime = datetime.strptime(start_date, "%Y-%m-%d")
         end_datetime = datetime.strptime(end_date, "%Y-%m-%d") + timedelta(days=1)  # End date is inclusive
 
-        # Set timezone to UTC
+        # Set timezone to UTC to avoid conflicts as discord uses timestamps based on UTC
         timezone = pytz.timezone('UTC')
         start_datetime = timezone.localize(start_datetime)
         end_datetime = timezone.localize(end_datetime)
@@ -55,7 +59,7 @@ async def collectids(ctx):
         
         await ctx.send(f"Collecting user IDs from {start_datetime} to {end_datetime} in channel '{channel_name}'.")
 
-        # Collect user IDs from the specified channel and date range
+        # Collect user IDs from the specified channel and date range (NOW SAVED AS A LIST SO ALL MESSAGES ARE CONSIDERED)
         user_ids = []
         async for message in channel.history(after=start_datetime, before=end_datetime):
             if start_datetime <= message.created_at < end_datetime:
@@ -63,7 +67,7 @@ async def collectids(ctx):
 
         await ctx.send(f"Collected {len(user_ids)} unique user IDs.")
         
-        # Save the IDs to a file
+        # Save the IDs to a file (THE OUTPUT: TO BE USED FOR THE LEADERBOARD COINS ASSIGNMENT USING THE BOT)
         with open("user_ids.txt", "w") as f:
             for user_id in user_ids:
                 f.write(f"{user_id}\n")
